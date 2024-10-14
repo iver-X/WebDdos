@@ -3,32 +3,58 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Run Python Script</title>
+    <title>STELLAR Attack</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            padding-top: 50px;
+        }
+        .card {
+            margin-top: 30px;
+        }
+    </style>
 </head>
 <body>
-    <h1>Jalankan Script Python</h1>
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-6">
+                <div class="card">
+                    <div class="card-header text-center bg-primary text-white">
+                        <h3>STELLAR Attack Configuration</h3>
+                    </div>
+                    <div class="card-body">
+                        <form action="{{ url_for('run_script') }}" method="POST">
+                            <div class="mb-3">
+                                <label for="target" class="form-label">Target URL</label>
+                                <input type="url" class="form-control" id="target" name="target" placeholder="https://example.com" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="thread" class="form-label">Number of Threads</label>
+                                <input type="number" class="form-control" id="thread" name="thread" placeholder="10" min="1" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="time" class="form-label">Attack Duration (seconds)</label>
+                                <input type="number" class="form-control" id="time" name="time" placeholder="60" min="1" required>
+                            </div>
+                            <div class="d-grid">
+                                <button type="submit" class="btn btn-primary">Launch Attack</button>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="card-footer text-center">
+                        {% with messages = get_flashed_messages() %}
+                            {% if messages %}
+                                <div class="alert alert-warning">
+                                    {{ messages[0] }}
+                                </div>
+                            {% endif %}
+                        {% endwith %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 
-    {% with messages = get_flashed_messages() %}
-      {% if messages %}
-        <ul>
-        {% for message in messages %}
-          <li style="color: red;">{{ message }}</li>
-        {% endfor %}
-        </ul>
-      {% endif %}
-    {% endwith %}
-
-    <form action="/run" method="post">
-        <label for="target">URL Target:</label>
-        <input type="text" id="target" name="target" required><br><br>
-
-        <label for="thread">Jumlah Thread:</label>
-        <input type="number" id="thread" name="thread" required><br><br>
-
-        <label for="time">Waktu (detik):</label>
-        <input type="number" id="time" name="time" required><br><br>
-
-        <input type="submit" value="Jalankan Script">
-    </form>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
