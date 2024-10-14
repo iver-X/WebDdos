@@ -3,20 +3,43 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Output Script</title>
+    <title>STELLAR Attack Result</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            padding-top: 50px;
+        }
+        .card {
+            margin-top: 30px;
+        }
+        pre {
+            background-color: #f8f9fa;
+            padding: 15px;
+            border-radius: 5px;
+            overflow: auto;
+            max-height: 400px;
+        }
+    </style>
 </head>
 <body>
-    <h1>Hasil Eksekusi Script</h1>
-
-    <div>
-        <h2>Status Serangan:</h2>
-        <pre>
-        {% for line in output %}
-            {{ line }}
-        {% endfor %}
-        </pre>
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-8">
+                <div class="card">
+                    <div class="card-header text-center bg-success text-white">
+                        <h3>Attack Result</h3>
+                    </div>
+                    <div class="card-body">
+                        <pre>{{ output|join('\n') }}</pre>
+                        <div class="d-grid mt-3">
+                            <a href="{{ url_for('index') }}" class="btn btn-primary">Go Back</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 
-    <a href="/">Kembali ke Halaman Utama</a>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
