@@ -13,7 +13,7 @@ import subprocess
 
 # Inisialisasi Flask
 app = Flask(__name__)
-app.secret_key = 'your_secret_key'  # Ganti dengan kunci yang aman
+app.secret_key = '3a6a3d3ca3f4c0a0681fcd14bfaf678b0b9666ffd37d09a1'  # Ganti dengan kunci yang aman
 
 # Colors
 M2 = "[#FF0000]"  # MERAH
